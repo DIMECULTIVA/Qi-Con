@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Qi-Con</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>body { background-color: #000; color: #fff; font-family: sans-serif; }</style>
+</head>
+<body class="bg-black text-white min-h-screen pt-24">
+
+    <nav class="fixed top-0 w-full z-50 flex justify-between items-center p-6 bg-black/80 backdrop-blur-md border-b border-gray-800">
+        <a href="index.html" class="text-4xl font-bold tracking-tighter">Q</a>
+        <div class="flex gap-6 font-semibold">
+            <a href="index.html" class="hover:text-blue-400 transition-colors">Home</a>
+            <a href="portfolio.html" class="hover:text-blue-400 transition-colors">Portfolio</a>
+            <a href="blog.html" class="hover:text-blue-400 transition-colors">Blog</a>
+            <a href="contact.html" class="text-blue-500">Contact</a>
+        </div>
+    </nav>
+
+    <div class="container mx-auto px-6 py-12 flex items-center justify-center min-h-[80vh]">
+        <div class="grid md:grid-cols-2 gap-16 w-full max-w-6xl bg-gray-900/50 p-12 rounded-2xl border border-gray-800">
+            
+            <div>
+                <h1 class="text-5xl font-bold mb-6">Let's Build Together</h1>
+                <p class="text-gray-400 mb-12 text-lg">Ready to bring your vision to life? Contact Qi-Con today.</p>
+                
+                <div class="space-y-6">
+                    <a href="tel:0761546487" class="flex items-center gap-4 text-xl hover:text-blue-400 transition">
+                        <i class="fa-solid fa-phone text-blue-500 text-2xl w-8"></i> 076 154 6487
+                    </a>
+                    <a href="mailto:qilogistico@gmail.com" class="flex items-center gap-4 text-xl hover:text-blue-400 transition">
+                        <i class="fa-solid fa-envelope text-blue-500 text-2xl w-8"></i> qilogistico@gmail.com
+                    </a>
+                    <a href="https://www.instagram.com/qilogistico?igsh=YWV5M21pcnRiNHU2" target="_blank" class="flex items-center gap-4 text-xl hover:text-blue-400 transition">
+                        <i class="fa-brands fa-instagram text-blue-500 text-3xl w-8"></i> qi_con
+                    </a>
+                </div>
+            </div>
+
+            <form name="qicon-contact" method="POST" data-netlify="true" class="flex flex-col gap-6">
+                <input type="hidden" name="form-name" value="qicon-contact" />
+                
+                <input type="text" name="name" placeholder="Your Name" required 
+                       class="p-4 bg-transparent border border-gray-600 rounded-lg focus:outline-none focus:border-blue-500 text-white w-full" />
+                
+                <input type="email" name="email" placeholder="Your Email" required 
+                       class="p-4 bg-transparent border border-gray-600 rounded-lg focus:outline-none focus:border-blue-500 text-white w-full" />
+                
+                <textarea name="message" placeholder="Tell us about your project..." rows="5" required
+                          class="p-4 bg-transparent border border-gray-600 rounded-lg focus:outline-none focus:border-blue-500 text-white w-full resize-none"></textarea>
+                
+                <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-lg transition-colors w-full">
+                    Send Inquiry
+                </button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
