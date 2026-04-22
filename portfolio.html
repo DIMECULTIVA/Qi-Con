@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Qi-Con</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { margin: 0; overflow-x: hidden; background-color: #000; color: #fff; font-family: sans-serif; }
+        .project-section { height: 100vh; overflow: hidden; display: flex; flex-direction: column; justify-content: center; border-bottom: 1px solid #333; }
+        .gallery-track { display: flex; gap: 2rem; padding: 0 2rem; width: max-content; }
+        .gallery-item { width: 80vw; height: 60vh; flex-shrink: 0; }
+        @media (min-width: 768px) { .gallery-item { width: 50vw; } }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; border-radius: 1rem; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
+    </style>
+</head>
+<body>
+
+    <nav class="fixed top-0 w-full z-50 flex justify-between items-center p-6 bg-black/80 backdrop-blur-md">
+        <a href="index.html" class="text-4xl font-bold tracking-tighter">Q</a>
+        <div class="flex gap-6 font-semibold">
+            <a href="index.html" class="hover:text-blue-400 transition-colors">Home</a>
+            <a href="portfolio.html" class="text-blue-500">Portfolio</a>
+            <a href="blog.html" class="hover:text-blue-400 transition-colors">Blog</a>
+            <a href="contact.html" class="hover:text-blue-400 transition-colors">Contact</a>
+        </div>
+    </nav>
+
+    <div class="project-section mt-20" id="waterfall-section">
+        <div class="container mx-auto px-6 mb-8 relative z-10">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">Waterfall Residence</h2>
+            <p class="text-gray-300 max-w-3xl text-lg">Located in Waterfall, this residence blends sleek modernity with serene landscapes. Key features include open-plan living, eco-friendly materials, and a seamless indoor-outdoor connection. Every detail of this project showcases our ability to create luxurious sustainable homes tailored to client aspirations.</p>
+        </div>
+        <div class="gallery-track" id="waterfall-track"></div>
+    </div>
+
+    <div class="project-section" id="roodepoort-section">
+        <div class="container mx-auto px-6 mb-8 relative z-10">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">Roodepoort Transformation</h2>
+            <p class="text-gray-300 max-w-3xl text-lg">In Roodepoort, we transformed a site into a modern residential home, turning the client's plans on paper into a functional and comfortable living space. By blending timeless design with contemporary construction, this project delivers quality while meeting modern living needs.</p>
+        </div>
+        <div class="gallery-track" id="roodepoort-track"></div>
+    </div>
+
+    <div class="project-section" id="harties-section">
+        <div class="container mx-auto px-6 mb-8 relative z-10">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">Hartbeespoort Home</h2>
+            <p class="text-gray-300 max-w-3xl text-lg">In the heart of Hartbeespoort, we transformed the site into a modern residential home. By blending timeless design with contemporary construction, this project delivers comfortable living while meeting today's practical needs.</p>
+        </div>
+        <div class="gallery-track" id="harties-track"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <script>
+        // 1. Inject Images Automatically
+        function populateGallery(trackId, prefix, count) {
+            const track = document.getElementById(trackId);
+            for (let i = 1; i <= count; i++) {
+                track.innerHTML += `
+                    <div class="gallery-item">
+                        <img src="${prefix}${i}.jpg" alt="Project Image ${i}" loading="lazy" onerror="this.src='https://via.placeholder.com/800x600?text=Image+${prefix}${i}.jpg+Missing'">
+                    </div>
+                `;
+            }
+        }
+
+        populateGallery('waterfall-track', 'W', 12);
+        populateGallery('roodepoort-track', 'R', 10);
+        populateGallery('harties-track', 'H', 5);
+
+        // 2. Setup GSAP Horizontal Scroll
+        gsap.registerPlugin(ScrollTrigger);
+
+        const sections = gsap.utils.toArray(".project-section");
+        
+        sections.forEach((section) => {
+            const track = section.querySelector(".gallery-track");
+            
+            // Calculate how far to scroll the track
+            let scrollWidth = track.scrollWidth - window.innerWidth + 64; // 64 is for padding
+
+            gsap.to(track, {
+                x: -scrollWidth,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: section,
+                    pin: true,
+                    scrub: 1, // Smooth scrubbing
+                    end: () => "+=" + scrollWidth
+                }
+            });
+        });
+    </script>
+</body>
+</html>
